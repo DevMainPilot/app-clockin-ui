@@ -16,6 +16,8 @@ export const authConfig = {
       let isOnRegister = nextUrl.pathname.startsWith("/register");
       let isOnLogin = nextUrl.pathname.startsWith("/login");
 
+      console.log("----callbacks", nextUrl.pathname);
+
       if (isLoggedIn && (isOnLogin || isOnRegister)) {
         return Response.redirect(new URL("/", nextUrl));
       }

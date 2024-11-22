@@ -55,26 +55,42 @@ export const register = async (
   _: RegisterActionState,
   formData: FormData,
 ): Promise<RegisterActionState> => {
+
+    console.log("----register" );
+
   try {
-    const validatedData = authFormSchema.parse({
-      email: formData.get("email"),
-      password: formData.get("password"),
-    });
 
-    let [user] = await getUser(validatedData.email);
+    const validatedData = {
+            username: formData.get("email") ,
+            password: formData.get("password"),
+            role: formData.get("email") ,
+        }
+    ;
+    console.log("----register validatedData" );
 
-    if (user) {
-      return { status: "user_exists" } as RegisterActionState;
-    } else {
-      await createUser(validatedData.email, validatedData.password);
-      await signIn("credentials", {
-        email: validatedData.email,
-        password: validatedData.password,
-        redirect: false,
-      });
+    // let [user] = await getUser(validatedData.email);
+    //let [user] = false ;
+
+    console.log("----register 2" );
+
+    //if (false) {
+    //  return { status: "user_exists" } as RegisterActionState;
+    //} else {
+
+      console.log("----pre createUser" );
+
+      await createUser(validatedData.username, validatedData.password, validatedData.role);
+
+      console.log("----createUser" );
+
+      //await signIn("credentials", {
+      //  email: validatedData.email,
+      //  password: validatedData.password,
+      //  redirect: false,
+      //});
 
       return { status: "success" };
-    }
+   // }
   } catch (error) {
     if (error instanceof z.ZodError) {
       return { status: "invalid_data" };

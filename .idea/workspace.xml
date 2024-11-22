@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6adf9e9-c69f-47d8-864e-17903b1c6e5e" name="Changes" comment="" />
+    <list default="true" id="a6adf9e9-c69f-47d8-864e-17903b1c6e5e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/layout_cp.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/custom/theme-provider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/input.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/label.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/auth.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/auth.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/register/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page_cp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/db/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/queries.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +32,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2pCNceOL2Ff9mCCurIeNVVBqLzH" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -25,13 +44,17 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.codeium.enabled": "true",
-    "git-widget-placeholder": "dev",
-    "last_opened_file_path": "C:/GitHub/app-clockin-ui/nextjs-app"
+    "git-widget-placeholder": "feature-login",
+    "last_opened_file_path": "C:/GitHub/app-clockin-ui/src/data/actions"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\GitHub\app-clockin-ui\nextjs-app" />
+      <recent name="C:\GitHub\app-clockin-ui\src\data\actions" />
+      <recent name="C:\GitHub\app-clockin-ui\src\data\services" />
+      <recent name="C:\GitHub\app-clockin-ui\src" />
+      <recent name="C:\GitHub\app-clockin-ui\src\app" />
+      <recent name="C:\GitHub\app-clockin-ui" />
     </key>
   </component>
   <component name="SharedIndexes">

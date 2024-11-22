@@ -39,6 +39,7 @@ export default function Page() {
     formAction(formData);
   };
 
+
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-background">
       <div className="w-full max-w-md overflow-hidden rounded-2xl gap-12 flex flex-col">
