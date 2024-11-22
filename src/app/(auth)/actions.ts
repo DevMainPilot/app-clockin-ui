@@ -63,7 +63,7 @@ export const register = async (
     const validatedData = {
             username: formData.get("email") ,
             password: formData.get("password"),
-            role: formData.get("email") ,
+            role: formData.get("rol") ,
         }
     ;
     console.log("----register validatedData" );

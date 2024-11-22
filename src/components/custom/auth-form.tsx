@@ -47,6 +47,22 @@ export function AuthForm({
           type="password"
           required
         />
+
+        <Label
+          htmlFor="rol"
+          className="text-zinc-600 font-normal dark:text-zinc-400"
+        >
+          rol
+        </Label>
+
+        <Input
+          id="rol"
+          name="rol"
+          className="bg-muted text-md md:text-sm"
+          type="rol"
+          required
+        />
+
       </div>
 
       {children}
