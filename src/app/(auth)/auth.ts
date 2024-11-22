@@ -21,21 +21,36 @@ export const {
     Credentials({
       credentials: {},
       async authorize({ email, password }: any) {
-        let users = await getUser(email);
-        if (users.length === 0) return null;
-        let passwordsMatch = await compare(password, users[0].password!);
-        if (passwordsMatch) return users[0] as any;
+
+        console.log("----authorize" );
+
+        let users = await getUser(email,password );
+
+        if (users === null ) return null;
+
+
+        console.log("----authorize NO TIENE QUE LLEGAR SI HAY ERROR: " + users);
+
+        //let passwordsMatch = await compare(password, users[0].password!);
+        //if (passwordsMatch)
+        //return users[0] as any;
+
+        const users_example = [{ id: 1, username: email, password: password, role: "test_role" }];
+
+        //return null;
+        return users_example[0] as any;
       },
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
-      }
-
-      return token;
-    },
+    //
+    //async jwt({ token, user }) {
+    //  if (user) {
+    //    token.id = user.id;
+    //  }
+    //
+    //  return token;
+    //},
     async session({
       session,
       token,

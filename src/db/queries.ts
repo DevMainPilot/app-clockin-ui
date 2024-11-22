@@ -1,17 +1,18 @@
 "server-only";
 
 import {
-  registerUserAction
+  registerUserAction , loginUserAction
 } from "@/data/actions/auth-actions";
 
 
-export async function createUser(email: string, password: string, rol: string) {
+
+export async function createUser(username: string, password: string, rol: string) {
 
   try {
 
       console.log("----createUser method pre" );
 
-      const responseData = await registerUserAction(email , password , rol );
+      const responseData = await registerUserAction(username , password , rol );
 
        console.log("----createUser method post" );
 
@@ -24,16 +25,20 @@ export async function createUser(email: string, password: string, rol: string) {
 }
 
 
-export async function getUser(email: string){
+export async function getUser(username: string, password: string){
   try {
 
-    console.log("Enter to getUser");
+      console.log("----getUser method pre" );
 
-    return "";
+      const responseData = await loginUserAction (username , password );
+
+       console.log("----getUser method post" );
+
+    return responseData;
 
   } catch (error) {
     console.error("Failed to get user from api");
-    throw error;
+    //throw error;
   }
 }
 

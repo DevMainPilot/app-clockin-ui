@@ -20,18 +20,28 @@ export const login = async (
   formData: FormData,
 ): Promise<LoginActionState> => {
   try {
-    const validatedData = authFormSchema.parse({
-      email: formData.get("email"),
-      password: formData.get("password"),
-    });
 
-    await signIn("credentials", {
-      email: validatedData.email,
-      password: validatedData.password,
-      redirect: false,
-    });
+       console.log("----login" );
+
+
+    const validatedData = {
+            username: formData.get("email") ,
+            password: formData.get("password")
+        }
+    ;
+
+ console.log("----login 2" );
+
+      await signIn("credentials", {
+        email: validatedData.username,
+        password: validatedData.password,
+        redirect: false,
+      });
+
+console.log("----success  " );
 
     return { status: "success" };
+
   } catch (error) {
     if (error instanceof z.ZodError) {
       return { status: "invalid_data" };
@@ -69,13 +79,14 @@ export const register = async (
     console.log("----register validatedData" );
 
     // let [user] = await getUser(validatedData.email);
-    //let [user] = false ;
 
     console.log("----register 2" );
 
-    //if (false) {
-    //  return { status: "user_exists" } as RegisterActionState;
-    //} else {
+    const validated = false;
+
+    if (validated) {
+     return { status: "user_exists" } as RegisterActionState;
+    } else {
 
       console.log("----pre createUser" );
 
@@ -83,14 +94,14 @@ export const register = async (
 
       console.log("----createUser" );
 
-      //await signIn("credentials", {
-      //  email: validatedData.email,
-      //  password: validatedData.password,
-      //  redirect: false,
-      //});
+      await signIn("credentials", {
+        email: validatedData.email,
+        password: validatedData.password,
+        redirect: false,
+      });
 
       return { status: "success" };
-   // }
+   }
   } catch (error) {
     if (error instanceof z.ZodError) {
       return { status: "invalid_data" };

@@ -3,7 +3,7 @@ import Form from 'next/form';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 
-export function AuthForm({
+export function AuthFormLogin({
   action,
   children,
   defaultEmail = '',
@@ -19,7 +19,7 @@ export function AuthForm({
           htmlFor="email"
           className="text-zinc-600 font-normal dark:text-zinc-400"
         >
-          Usuario
+          Email Address
         </Label>
 
         <Input
@@ -37,7 +37,7 @@ export function AuthForm({
           htmlFor="password"
           className="text-zinc-600 font-normal dark:text-zinc-400"
         >
-          Contraseña
+          Password
         </Label>
 
         <Input
@@ -48,20 +48,9 @@ export function AuthForm({
           required
         />
 
-        <Label
-          htmlFor="rol"
-          className="text-zinc-600 font-normal dark:text-zinc-400"
-        >
-          Rol
-        </Label>
 
-        <Input
-          id="rol"
-          name="rol"
-          className="bg-muted text-md md:text-sm"
-          type="rol"
-          required
-        />
+
+
 
       </div>
 
