@@ -1,5 +1,4 @@
 "use server";
-
 import { z } from "zod";
 import { createUser, getUser } from "@/calls/calls";
 import { signIn } from "./auth";
@@ -30,12 +29,9 @@ export const login = async (
     });
 
     return { status: "success" };
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      return { status: "invalid_data" };
-    }
 
-    return { status: "failed" };
+  } catch (error) {
+        return { status: "failed" };
   }
 };
 
@@ -60,26 +56,16 @@ export const register = async (
       role: formData.get("rol") as string,
     };
 
-    const validated = false;  // Simulación de validación
+    await createUser(validatedData.username, validatedData.password, validatedData.role);
 
-    if (validated) {
-      return { status: "user_exists" } as RegisterActionState;
-    } else {
-      await createUser(validatedData.username, validatedData.password, validatedData.role);
+    await signIn("credentials", {
+      email: validatedData.username,
+      password: validatedData.password,
+      redirect: false,
+    });
 
-      await signIn("credentials", {
-        email: validatedData.username,
-        password: validatedData.password,
-        redirect: false,
-      });
-
-      return { status: "success" };
-    }
+    return { status: "success" };
   } catch (error) {
-    if (error instanceof z.ZodError) {
-      return { status: "invalid_data" };
-    }
-
     return { status: "failed" };
   }
 };

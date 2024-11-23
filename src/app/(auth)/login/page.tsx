@@ -22,9 +22,9 @@ export default function Page() {
 
   useEffect(() => {
     if (state.status === "failed") {
-      toast.error("Invalid credentials!");
+      toast.error("¡Credenciales inválidas!");
     } else if (state.status === "invalid_data") {
-      toast.error("Failed validating your submission!");
+      toast.error("¡Falló la validación de tu envío!");
     } else if (state.status === "success") {
       router.refresh();
     }

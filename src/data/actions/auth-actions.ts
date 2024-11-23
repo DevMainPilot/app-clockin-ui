@@ -56,8 +56,6 @@ export async function loginUserAction(username: string, password: string) {
             });
 
       }
-
-
       return responseData;
 
   } catch (error) {

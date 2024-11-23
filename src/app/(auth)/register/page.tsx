@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useActionState, useEffect, useState } from "react";
 import { toast } from "sonner";
 
-import { AuthForm } from "@/components/custom/auth-form";
+import { AuthForm } from "@/components/custom/auth-form-register";
 import { SubmitButton } from "@/components/custom/submit-button";
 
 import { register, RegisterActionState } from "../actions";
@@ -22,16 +22,17 @@ export default function Page() {
 
   useEffect(() => {
     if (state.status === "user_exists") {
-      toast.error("Account already exists");
+      toast.error("La cuenta ya existe");
     } else if (state.status === "failed") {
-      toast.error("Failed to create account");
+      toast.error("No se pudo crear la cuenta");
     } else if (state.status === "invalid_data") {
-      toast.error("Failed validating your submission!");
+      toast.error("¡Falló la validación de tu envío!");
     } else if (state.status === "success") {
-      toast.success("Account created successfully");
+      toast.success("Cuenta creada con éxito");
       router.refresh();
     }
   }, [state, router]);
+
 
   const handleSubmit = (formData: FormData) => {
     setEmail(formData.get("email") as string);

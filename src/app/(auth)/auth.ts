@@ -20,14 +20,11 @@ export const {
       credentials: {},
       async authorize({ email, password }: any) {
         let users = await getUser(email, password);
-
         if (users === null) {
-
                 return null;
             }
-
-        const users_example = [{ id: 1, username: email, password: password, role: "test_role" }];
-        return users_example[0] as any;
+        const users_tmp = [{ id: 1, username: email, password: password, role: "role" }];
+        return users_tmp[0] as any;
       },
     }),
   ],
