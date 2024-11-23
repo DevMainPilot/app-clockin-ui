@@ -5,10 +5,7 @@ export const authConfig = {
     signIn: "/login",
     newUser: "/",
   },
-  providers: [
-    // added later in auth.ts since it requires bcrypt which is only compatible with Node.js
-    // while this file is also used in non-Node.js environments
-  ],
+  providers: [],
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       let isLoggedIn = !!auth?.user;
@@ -16,19 +13,17 @@ export const authConfig = {
       let isOnRegister = nextUrl.pathname.startsWith("/register");
       let isOnLogin = nextUrl.pathname.startsWith("/login");
 
-      console.log("----callbacks", nextUrl.pathname);
-
       if (isLoggedIn && (isOnLogin || isOnRegister)) {
         return Response.redirect(new URL("/", nextUrl));
       }
 
       if (isOnRegister || isOnLogin) {
-        return true; // Always allow access to register and login pages
+        return true;
       }
 
       if (isOnChat) {
         if (isLoggedIn) return true;
-        return false; // Redirect unauthenticated users to login page
+        return false;
       }
 
       if (isLoggedIn) {

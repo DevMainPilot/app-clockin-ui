@@ -3,14 +3,13 @@
 import { z } from "zod";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-
 import {
   registerUserService,
   loginUserService,
 } from "@/data/services/auth-service";
 
 const config = {
-  maxAge: 60 * 60 * 24 * 7, // 1 week
+  maxAge: 60 * 60 * 24 * 7,
   path: "/",
   domain: process.env.HOST ?? "localhost",
   httpOnly: true,
@@ -18,87 +17,78 @@ const config = {
 };
 
 export async function registerUserAction(email: string, password: string, rol: string) {
-
- console.log("----registerUserAction method pre" );
-
   const validatedFields = {
-      username: email,
-      password: password,
-      role: rol
+    username: email,
+    password: password,
+    role: rol,
   };
-
-  console.log("----registerUserService method pre" );
 
   const responseData = await registerUserService(validatedFields);
 
   if (responseData.error) {
-    return  "Failed register."
+    return "Failed register.";
   }
-
-  //cookies().set("jwt", responseData.jwt, config);
 
   redirect("/dashboard");
 }
 
-
-export async function loginUserAction(username: string, password: string ) {
-
-    const validatedFields = {
-      username: username,
-      password: password
+export async function loginUserAction(username: string, password: string) {
+  const validatedFields = {
+    username: username,
+    password: password,
   };
 
-  const responseData = await loginUserService(validatedFields);
+  try {
 
-  //if (responseData.error) {
-  //  return  "Failed login."
-  //}
+      const responseData = await loginUserService(validatedFields);
 
-  //cookies().set("jwt", responseData.access_token);
+      if (responseData===null){
+          console.log(" ----loginUserAction responseData jwt null");
+      }
+      else{
 
-  console.log("----setJwtCookie "  + responseData);
+          console.log(" -----loginUserAction responseData jwt", responseData.access_token);
+          //cookies().set("jwt", responseData.access_token);
 
-  console.log("----setJwtCookie  responseData.access_token: "  + responseData.access_token);
+            const cookieHandler = await cookies();
+            cookieHandler.set("jwt", responseData.access_token, {
+              path: "/"
+            });
 
-cookies().set("jwt", responseData.access_token);
-  //  await setJwtCookie(responseData);
+      }
 
-    return responseData;
-  //redirect("/dashboard");
+
+      return responseData;
+
+  } catch (error) {
+
+  }
+
+
 }
-
-//export async function logoutAction() {
-   //   cookies().set("jwt", "", { ...config, maxAge: 0 });
-  //    redirect("/");
-//}
 
 export async function logoutAction2() {
   try {
-
-    const cookieHandler = await cookies(); // Espera la operación cookies()
-    cookieHandler.set("jwt", "", { ...config, maxAge: 0 }); // Usa cookieHandler para setear la cookie
-
-    //redirect("/");
-
+    const cookieHandler = await cookies();
+    cookieHandler.set("jwt", "", { ...config, maxAge: 0 });
   } catch (error) {
     console.error("Error al modificar la cookie:", error.message);
-    throw error; // Lanza de nuevo el error si es necesario manejarlo en otro lugar
+    throw error;
   }
 }
 
 export async function logoutAction() {
   try {
-    const cookieHandler = await cookies(); // Espera la operación cookies()
+    console.log(" ----logoutAction delete jwt ");
+    const cookieHandler = await cookies();
     cookieHandler.set("jwt", "", {
-      path: "/", // Asegúrate de establecer el path correcto
-      maxAge: -1, // Establece la edad máxima a 0 para eliminar la cookie
+      path: "/login",
+      maxAge: -1,
     });
 
-    // Realiza la redirección después de que la cookie haya sido configurada
-     redirect("/login");
+    redirect("/login");
   } catch (error) {
     console.error("Error al modificar la cookie:", error.message);
-    throw error; // Lanza de nuevo el error si es necesario manejarlo en otro lugar
+    throw error;
   }
 }
-

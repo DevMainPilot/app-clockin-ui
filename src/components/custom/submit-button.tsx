@@ -10,20 +10,10 @@ export function SubmitButton({ children }: { children: React.ReactNode }) {
   const { pending } = useFormStatus();
 
   return (
-    <Button
-      type={pending ? "button" : "submit"}
-      aria-disabled={pending}
-      className="relative"
-    >
-      {children}
-      {pending && (
-        <span className="animate-spin absolute right-4">
+      <Button type={pending ? "button" : "submit"} aria-disabled={pending} className="relative"> {children} {pending && ( <span className="animate-spin absolute right-4">
           <LoaderIcon />
-        </span>
-      )}
-      <span aria-live="polite" className="sr-only" role="status">
+        </span> )} <span aria-live="polite" className="sr-only" role="status">
         {pending ? "Loading" : "Submit form"}
-      </span>
-    </Button>
+      </span> </Button>
   );
 }

@@ -1,9 +1,7 @@
 "use server";
 
 import { z } from "zod";
-
-import { createUser, getUser } from "@/db/queries";
-
+import { createUser, getUser } from "@/calls/calls";
 import { signIn } from "./auth";
 
 const authFormSchema = z.object({
@@ -20,28 +18,18 @@ export const login = async (
   formData: FormData,
 ): Promise<LoginActionState> => {
   try {
-
-       console.log("----login" );
-
-
     const validatedData = {
-            username: formData.get("email") ,
-            password: formData.get("password")
-        }
-    ;
+      username: formData.get("email") as string,
+      password: formData.get("password") as string,
+    };
 
- console.log("----login 2" );
-
-      await signIn("credentials", {
-        email: validatedData.username,
-        password: validatedData.password,
-        redirect: false,
-      });
-
-console.log("----success  " );
+    await signIn("credentials", {
+      email: validatedData.username,
+      password: validatedData.password,
+      redirect: false,
+    });
 
     return { status: "success" };
-
   } catch (error) {
     if (error instanceof z.ZodError) {
       return { status: "invalid_data" };
@@ -65,43 +53,28 @@ export const register = async (
   _: RegisterActionState,
   formData: FormData,
 ): Promise<RegisterActionState> => {
-
-    console.log("----register" );
-
   try {
-
     const validatedData = {
-            username: formData.get("email") ,
-            password: formData.get("password"),
-            role: formData.get("rol") ,
-        }
-    ;
-    console.log("----register validatedData" );
+      username: formData.get("email") as string,
+      password: formData.get("password") as string,
+      role: formData.get("rol") as string,
+    };
 
-    // let [user] = await getUser(validatedData.email);
-
-    console.log("----register 2" );
-
-    const validated = false;
+    const validated = false;  // Simulación de validación
 
     if (validated) {
-     return { status: "user_exists" } as RegisterActionState;
+      return { status: "user_exists" } as RegisterActionState;
     } else {
-
-      console.log("----pre createUser" );
-
       await createUser(validatedData.username, validatedData.password, validatedData.role);
 
-      console.log("----createUser" );
-
       await signIn("credentials", {
-        email: validatedData.email,
+        email: validatedData.username,
         password: validatedData.password,
         redirect: false,
       });
 
       return { status: "success" };
-   }
+    }
   } catch (error) {
     if (error instanceof z.ZodError) {
       return { status: "invalid_data" };
