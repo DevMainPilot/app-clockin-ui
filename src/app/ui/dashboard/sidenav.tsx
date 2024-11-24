@@ -2,6 +2,9 @@ import Link from 'next/link';
 import NavLinks from '@/app/ui/dashboard/nav-links';
 import MainLogo from '@/app/ui/main-logo';
 import { PowerIcon } from '@heroicons/react/24/outline';
+import { signOut } from '@/app/(auth)/auth';
+import { cookies } from "next/headers";
+
 //import { signOut } from '@/auth';
 
 // Color tailwindcss patterns:
@@ -24,6 +27,15 @@ export default function SideNav() {
         <form action={async () => {
             'use server';
             //await signOut();
+
+            const cookieHandler = await cookies();
+            cookieHandler.set("jwt", "", {
+              path: "/",
+              maxAge: -1,
+            });
+
+            await signOut({ redirectTo: '/', });
+
           }}>
           <button className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-blue-200 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
             <PowerIcon className="w-6" />

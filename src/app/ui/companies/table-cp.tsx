@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { UpdateCompany, DeleteCompany } from '@/app/ui/companies/buttons';
-import CompanyStatus from '@/app/ui/companies/status';
+import { UpdateCompany, DeleteCompany } from '@/app/ui/Companies/buttons';
+import CompanyStatus from '@/app/ui/Companies/status';
 import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
 import { fetchFilteredCompanies } from '@/app/lib/data';
 
@@ -99,7 +99,7 @@ export default async function CompaniesTable({
                     {company.email}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    { company.amount }
+                    {formatCurrency(company.amount)}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     {formatDateToLocal(company.date)}
