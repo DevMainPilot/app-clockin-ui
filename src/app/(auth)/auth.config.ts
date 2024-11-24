@@ -13,6 +13,9 @@ export const authConfig = {
       let isOnRegister = nextUrl.pathname.startsWith("/register");
       let isOnLogin = nextUrl.pathname.startsWith("/login");
 
+       const isOnDashboardMain = nextUrl.pathname.startsWith('/dashboard');
+    if (isOnDashboardMain)
+         return true;
       if (isLoggedIn && (isOnLogin || isOnRegister)) {
         return Response.redirect(new URL("/", nextUrl));
       }

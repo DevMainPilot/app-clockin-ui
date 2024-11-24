@@ -1,18 +1,17 @@
-import { SignOutForm } from "@/components/custom/sign-out-form";
-import { Header } from "@/components/custom/Header";
-import { Footer } from "@/components/custom/Footer";
+import SideNav from '@/app/ui/dashboard/sidenav';
+     import { SignOutForm } from "@/components/custom/sign-out-form";
 
-export default async function Layout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
 
-        <h1>Dashboard</h1>
+      <div className="w-full flex-none md:w-64">
       <SignOutForm />
+        <SideNav />
+
+      </div>
+      <div className="flex-grow p-6 md:overflow-y-auto md:p-12">{children}</div>
+
 
     </div>
   );
