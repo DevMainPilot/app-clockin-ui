@@ -9,6 +9,14 @@ interface RegisterUserProps {
   role: string;
 }
 
+const response_debug = [
+  {
+    access_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJoZWN0b3IiLCJleHAiOjE3MzI2Mzg4OTl9.k3ttgKU-oC27A9rmb1UiaH7RClxo9AyrbEgVIIkDODI',
+    token_type: 'bearer',
+  },
+];
+
+
 export async function registerUserService(userData: RegisterUserProps) {
   const url = new URL("/auth/register", baseUrl);
 
@@ -22,6 +30,10 @@ export async function registerUserService(userData: RegisterUserProps) {
       body: JSON.stringify({ ...userData }),
     });
 
+    console.log("registerUserService response: " ,response );
+    console.log("registerUserService response: " ,userData );
+
+
     return response.json();
   } catch (error) {
     console.error("Registration Service Error:", error);
@@ -33,7 +45,7 @@ interface LoginUserProps {
   password: string;
 }
 
-export async function loginUserService(userData: LoginUserProps) {
+export async function loginUserService2(userData: LoginUserProps) {
   const url = new URL("/auth/login", baseUrl);
 
   try {
@@ -54,6 +66,9 @@ export async function loginUserService(userData: LoginUserProps) {
 
     const responseData = await response.json();
 
+    console.log("loginUserService response: " ,responseData);
+    console.log("loginUserService response: " ,userData  );
+
     // cookies().set("jwt", responseData.access_token);
 
     return responseData;
@@ -62,3 +77,31 @@ export async function loginUserService(userData: LoginUserProps) {
     throw error;
   }
 }
+
+
+export async function loginUserService(userData: LoginUserProps) {
+  const url = new URL("/auth/login", baseUrl);
+
+  try {
+
+
+    if (userData.username != "testUser" ) {
+
+      return null;
+    }
+
+    const responseData = response_debug;
+
+    console.log("loginUserService response: " ,responseData);
+    console.log("loginUserService response: " ,userData  );
+
+    // cookies().set("jwt", responseData.access_token);
+
+    return responseData;
+
+  } catch (error) {
+    console.error("Login Service Error:", error);
+    throw error;
+  }
+}
+
