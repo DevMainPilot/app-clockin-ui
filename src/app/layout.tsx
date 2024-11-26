@@ -65,32 +65,26 @@ export default async function RootLayout({
           defaultTheme="light"
           enableSystem={false}
           disableTransitionOnChange
-
         >
           <Toaster position="top-center" />
           {children}
 
-  <div class="mt-4 flex items-right justify-end gap-2 md:mt-8 ">
-
-
-                <df-messenger
-                  location="europe-west2"
-                  project-id="keen-vision-437710-j9"
-                  agent-id="498af930-2267-47c5-a7c7-a97b68d1828a"
-                  language-code="en"
-                  max-query-length="-1">
-                  <df-messenger-chat-bubble
-                   chat-title="Small talk">
-                  </df-messenger-chat-bubble>
-                </df-messenger>
-
-</div>
+          <div class="mt-4 flex items-right justify-end gap-2 md:mt-8 ">
+                        <df-messenger
+                          location="europe-west2"
+                          project-id="keen-vision-437710-j9"
+                          agent-id="498af930-2267-47c5-a7c7-a97b68d1828a"
+                          language-code="en"
+                          max-query-length="-1">
+                          <df-messenger-chat-bubble
+                           chat-title="Chatbot Assistant">
+                          </df-messenger-chat-bubble>
+                        </df-messenger>
+        </div>
 
         </ThemeProvider>
 
         <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
-
-
 
       </body>
     </html>
