@@ -20,6 +20,20 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+
+# Docker
+
+## Create and run a local image docker
+
+```bash
+
+docker build -t image-ui .
+
+docker run -p 3000:3000 image-ui
+
+```
+
+
 # Deploy Next.js to Google Cloud Run
 
 This is a Next.js template which can be deployed to [Google Cloud Run](https://cloud.google.com/run/docs).
@@ -46,18 +60,6 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-# Docker
-
-## Create and run a local image docker
-
-```bash
-
-docker build -t image-ui .
-
-docker run -p 3000:3000 image-ui
-
-```
 
 
 
