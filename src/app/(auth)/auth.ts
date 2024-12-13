@@ -8,6 +8,8 @@ interface ExtendedSession extends Session {
   user: User;
 }
 
+interface ExtendedUser extends User { access_token: string; }
+
 export const {
   handlers: { GET, POST },
   auth,
@@ -34,7 +36,7 @@ export const {
           },
         ];
 
-        return users_tmp[0] as any;
+        return users_tmp[0] as ExtendedUser;
       },
     }),
   ],
@@ -42,8 +44,9 @@ export const {
     jwt({ token, user }) {
       if (user) {
         // User is available during sign-in
-        token.id = user.id;
-        token.accessToken = user.access_token;
+        const extendedUser = user as ExtendedUser;
+        token.id = extendedUser.id;
+        token.accessToken = extendedUser.access_token;
       }
       return token;
     },

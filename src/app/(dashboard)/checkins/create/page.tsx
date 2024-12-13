@@ -1,6 +1,5 @@
 import Form from '@/app/ui_dashboard/checkins/create-form';
 import Breadcrumbs from '@/app/ui_dashboard/checkins/breadcrumbs';
-import { fetchCustomers } from '@/app/lib/data';
  
 export default async function Page() {
  
