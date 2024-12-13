@@ -1,11 +1,8 @@
 "use server";
 
-import { z } from "zod";
-import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { getBaseURL } from "@/lib/utils";
-//import { signIn } from '@/auth';
 import { auth } from "@/app/(auth)/auth";
 
 const baseUrl = getBaseURL();
@@ -44,7 +41,6 @@ export async function handleRegister(
     const response = await fetch(url, {
       method: "POST",
       headers: {
-        //"Content-Type": "application/x-www-form-urlencoded",
         "Accept": "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${session.user.username}`,

@@ -1,3 +1,6 @@
+This is a Nextjs 15 web project with login and registration functionality, allowing access to a dashboard where employees can perform time-related tasks such as check-ins. Users can log out of their sessions. 
+The project uses Next Auth for authentication and integrates JWT token and authorization endpoints with the app-clock API.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 # Getting Started

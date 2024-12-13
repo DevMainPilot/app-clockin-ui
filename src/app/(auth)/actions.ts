@@ -1,12 +1,14 @@
 "use server";
-import { z } from "zod";
+
 import { createUser } from "@/data-auth/actions/auth-actions";
 import { signIn } from "./auth";
 
-const authFormSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6),
-});
+//TODO: Next steps validation with Zod
+//import { z } from "zod";
+//const authFormSchema = z.object({
+//  email: z.string().email(),
+//  password: z.string().min(6),
+//});
 
 export interface LoginActionState {
   status: "idle" | "in_progress" | "success" | "failed" | "invalid_data";
